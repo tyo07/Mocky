@@ -9,6 +9,12 @@ lazy val root = (project in file("."))
 scalaVersion := "2.12.4"
 
 includeFilter in (Assets, LessKeys.less) := "*.less"
+val akkaVersion = "2.5.6"
+dependencyOverrides ++= Set( // Seq for SBT 1.0.x
+  "com.typesafe.akka" %% "akka-actor" % akkaVersion,
+  "com.typesafe.akka" %% "akka-stream" % akkaVersion,
+  "com.google.guava" % "guava" % "22.0"
+)
 
 libraryDependencies ++= Seq(
   ws,
