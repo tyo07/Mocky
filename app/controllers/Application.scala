@@ -15,8 +15,8 @@ import models._
 import services.{IRepository, RepositoryDispatcher}
 
 class Application @Inject()(cc: ControllerComponents, dispatcher: RepositoryDispatcher)
-    (implicit ec: ExecutionContext, actorSystem: ActorSystem)
-    extends AbstractController(cc) with I18nSupport {
+                           (implicit ec: ExecutionContext, actorSystem: ActorSystem)
+  extends AbstractController(cc) with I18nSupport {
 
   private val defaultError = Future(InternalServerError)
 
@@ -27,7 +27,7 @@ class Application @Inject()(cc: ControllerComponents, dispatcher: RepositoryDisp
       Ok(views.html.index(Mocker.formMocker))
     else
       Ok(views.html.index(Mocker.formMocker))
-//      Redirect("https://www.mocky.io", 301)
+    //      Redirect("https://www.mocky.io", 301)
   }
 
   def get(id: String, version: String) = Action.async { implicit request =>
